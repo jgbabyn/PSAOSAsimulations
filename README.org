@@ -1,0 +1,44 @@
+* About
+
+Contains code to recreate the simulations used in "A PSA for OSA residuals:
+Residual diagnostics for state-space stock assessment models".
+
+Each folder contains an R script containing a simulation scenario.
+The scenarios are as follows:
+
+| Folder Name       | Description                                             |
+|-------------------+---------------------------------------------------------|
+| no_misspec        | Base Case. No misspecification, \(\sigma_\epsilon = 1\) |
+| UltraLowIndexVar  | No misspecification, \(\sigma_\epsilon = 0.1\)          |
+| highIndexVar      | No misspecification, \(\sigma_\epsilon = 6\)            |
+| UltrahighIndexVar | No misspecification, \(\sigma_\epsilon = 20\)           |
+| noX               | Missing Covariate                                       |
+| outlier1          | Large outlier                                           |
+| q_misspec         | Reverse Q scenario                                      |
+| surv2             | Change in Q for one season                              |
+| equalQ            | Coupled Q                                               |
+| aggregate         | Aggregate index                                         |
+
+The ~*.cpp~ files contain the TMB model templates for the aggregate
+scenario (~fitA.cpp~) and all other scenarios (~fit.cpp~). Plotting
+code that is shared among scenarios is in ~plottingcode.R~ and
+can be used to recreate some of the plots in the paper.
+
+** Running the scripts
+
+The scripts can be run from the command line using the ~Rscript~
+command assuming that R and the necessary packages are installed and
+giving the correct arguments, e.g., assuming you're running this from
+this directory,
+
+#+begin_example
+Rscript --vanilla ./no_misspec/no_misspec.R 1000 FALSE 
+#+end_example
+
+will run the base no misspecification case for the first 1000 seeds
+and not output the plotting.
+
+The file ~control_script.R~ can be run generate all the simulations used,
+including the different orderings. Each run of the script will create
+an ~outputs-*.rds~ file that contains the list of all the simulations ran
+in the ~sims~ folder of the appropriate scenario.
