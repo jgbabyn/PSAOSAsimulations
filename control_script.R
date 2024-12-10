@@ -1,4 +1,4 @@
-##These system2 calls just run Rscript with the arguments in the 
+##These system2 calls just run Rscript with the arguments passed in the second argument to system2
 
 ##Base Case, 1000 sims, no plotting
 system2("Rscript","--vanilla ./no_misspec/no_misspec.R 3 FALSE")
