@@ -42,3 +42,7 @@ The file ~control_script.R~ can be run generate all the simulations used,
 including the different orderings. Each run of the script will create
 an ~outputs-*.rds~ file that contains the list of all the simulations ran
 in the ~sims~ folder of the appropriate scenario.
+
+** LOO and ALOO Code
+
+The code to produce the LOO and ALOO residuals is available in any of the scenario scripts.
