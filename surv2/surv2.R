@@ -1,7 +1,7 @@
 args = commandArgs(trailingOnly = TRUE)
 nseed = as.numeric(args[1]) ##Number
 do_plot = args[2] ## True or 
-ordering = args[3] ## say,asy,sya,yas,dsay
+ordering = args[3] ## say,asy,sya,yas,dsay,ysa,ydsa
 setwd("./surv2")
 
 #install.packages("randtests")
@@ -105,6 +105,15 @@ if(ordering == "say"){
 }else if(ordering == "dsay"){
     ind = order(dplyr::desc(simdata$survey),simdata$age,simdata$year)
     subdir2 = "./sort_desc_survey_age_year"
+}else if(ordering == "ysa"){
+    ind = order(simdata$year,simdata$survey,simdata$age)
+    subdir2 = "./sort_year_survey_age"
+}else if(ordering == "ydsa"){
+    ind = order(simdata$year,dplyr::desc(simdata$survey),simdata$age)
+    subdir2 = "./sort_year_desc_survey_age"
+}else if(ordering == "ays"){
+    ind = order(simdata$age,simdata$year,simdata$survey)
+    subdir2 = "./sort_age_year_survey"
 }
     
     
