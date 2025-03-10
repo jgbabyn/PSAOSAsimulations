@@ -174,7 +174,7 @@ opt<-nlminb(obj$par,obj$fn,obj$gr,
         parx[1:p]=x  
         objt$gr(parx[!indx]) 
         repx = objt$report(obj$env$last.par)
-        std.resid.x = (tmb.data$y - repx$Nay)/repx$sd_err[tmb.data$is+1] 
+        std.resid.x = (tmb.data$y - repx$mu)/repx$sd_err[tmb.data$is+1] 
         return(std.resid.x)     
     }
     x = opt$par
@@ -188,7 +188,7 @@ opt<-nlminb(obj$par,obj$fn,obj$gr,
         parx[1:length(tmb.data$wt)]=x
         objt$gr(parx[!indx]) 
         repx = objt$report(objt$env$last.par)
-        std.resid.x = (tmb.data$y - repx$Nay)/repx$sd_err[tmb.data$is+1] 
+        std.resid.x = (tmb.data$y - repx$mu)/repx$sd_err[tmb.data$is+1] 
         return(std.resid.x)      
     }
     nT = length(tmb.data$wt)
